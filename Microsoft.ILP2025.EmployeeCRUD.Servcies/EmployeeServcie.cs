@@ -26,5 +26,15 @@ namespace Microsoft.ILP2025.EmployeeCRUD.Servcies
         {
             return await employeeRepository.GetEmployee(id);
         }
+
+        public void Create(EmployeeEntity employee){
+            employeeRepository.Create(employee);
+        }
+        public void UpdateEmployee(EmployeeEntity employee){
+            employeeRepository.UpdateEmployee(employee);
+        }
+        public void DeleteEmployee(int id){
+            employeeRepository.DeleteEmployee(id);
+        }
     }
 }

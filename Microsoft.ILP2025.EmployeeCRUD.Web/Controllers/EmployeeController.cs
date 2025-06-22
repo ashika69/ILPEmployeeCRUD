@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.ILP2025.EmployeeCRUD.Repositores;
 using Microsoft.ILP2025.EmployeeCRUD.Servcies;
+using Microsoft.ILP2025.EmployeeCRUD.Entities;
 
 namespace Microsoft.ILP2025.EmployeeCRUD.Web.Controllers
 {
@@ -27,5 +28,54 @@ namespace Microsoft.ILP2025.EmployeeCRUD.Web.Controllers
             var employee = await this.employeeService.GetEmployee(id);
             return View(employee);
         }      
+      
+    public IActionResult Create(EmployeeEntity employee)
+    {
+        if (ModelState.IsValid)
+        {
+            employeeService.Create(employee); // adds employee to list
+            return RedirectToAction("Index"); // go back to list
+        }
+        return View(employee); // re-display form with validation errors
+    }
+
+    // GET: Edit
+     [HttpGet]
+     public async Task<ActionResult> Edit(int id)
+      {
+         var employee = await employeeService.GetEmployee(id);
+         if (employee == null){
+              return NotFound();
+        }
+          return View(employee);
+     }
+
+// POST: Edit
+    [HttpPost]
+    public IActionResult Edit(EmployeeEntity employee)
+    {
+        if (ModelState.IsValid)
+        {
+            employeeService.UpdateEmployee(employee);
+            return RedirectToAction("Index");
+        }
+        return View(employee);
+    }
+
+// GET: Delete
+     public async Task<ActionResult> Delete(int id)
+      {
+         var employee = await employeeService.GetEmployee(id);
+         if (employee == null) return NotFound();
+         return View(employee);
+     }
+
+// POST: Confirm Delete
+     [HttpPost, ActionName("Delete")]
+     public IActionResult DeleteConfirmed(int id)
+     {
+        employeeService.DeleteEmployee(id);
+         return RedirectToAction("Index");
+     }
     }
 }

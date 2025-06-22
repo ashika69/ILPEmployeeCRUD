@@ -1,0 +1,23 @@
+@model Microsoft.ILP2025.EmployeeCRUD.Entities.EmployeeEntity
+
+<h2>New Employee</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Name : </label>
+        <input asp-for="Name"  required/>
+    </div>
+    <div>
+        <label>Department : </label>
+        <input asp-for="Department" required />
+    </div>
+    <div>
+        <label>Age : </label>
+        <input asp-for="Age" required />
+    </div>
+     <div>
+        <label>Salary : </label>
+        <input asp-for="Salary" required />
+    </div>
+    <button type="submit">Save</button>
+</form>
