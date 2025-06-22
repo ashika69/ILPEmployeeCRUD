@@ -72,16 +72,24 @@ namespace Microsoft.ILP2025.EmployeeCRUD.Repositores
             if (emp != null)
             {
                 employeesList.Remove(emp);
-                SaveEmployees(); // 🔄 serialize updated list
+                SaveEmployees(); // 
             }
         }
 
         //Serialization Method: Save to JSON
-        private void SaveEmployees()
+      private void SaveEmployees()
         {
-            var json = JsonSerializer.Serialize(employeesList, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_jsonFilePath, json);
+            var json = JsonSerializer.Serialize(employeesList, new JsonSerializerOptions
+         {
+            WriteIndented = true
+            });
+
+        File.WriteAllText(_jsonFilePath, json);
+
+    //Refresh the list from the saved file
+        employeesList = GetEmployeeDetails();
         }
+
 
         // Deserialization Method: Load from JSON
         private List<EmployeeEntity> GetEmployeeDetails()

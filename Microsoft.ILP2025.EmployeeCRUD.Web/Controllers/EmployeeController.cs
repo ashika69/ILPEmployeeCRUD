@@ -62,20 +62,12 @@ namespace Microsoft.ILP2025.EmployeeCRUD.Web.Controllers
         return View(employee);
     }
 
-// GET: Delete
-     public async Task<ActionResult> Delete(int id)
-      {
-         var employee = await employeeService.GetEmployee(id);
-         if (employee == null) return NotFound();
-         return View(employee);
-     }
-
 // POST: Confirm Delete
-     [HttpPost, ActionName("Delete")]
-     public IActionResult DeleteConfirmed(int id)
+    //  [HttpPost, ActionName("Delete")]
+     public IActionResult Delete(int id)
      {
         employeeService.DeleteEmployee(id);
-         return RedirectToAction("Index");
+         return View();
      }
     }
 }

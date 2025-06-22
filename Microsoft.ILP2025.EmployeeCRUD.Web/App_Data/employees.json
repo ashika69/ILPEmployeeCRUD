@@ -1,9 +1,9 @@
 [
   {
     "Id": 1,
-    "Name": "Ashika",
+    "Name": "ashika",
     "Department": "IT",
-    "Age": 20,
-    "Salary": 50000
+    "Age": 25,
+    "Salary": 500000
   }
 ]
